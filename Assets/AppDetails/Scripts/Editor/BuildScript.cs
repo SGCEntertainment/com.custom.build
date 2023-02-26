@@ -21,20 +21,14 @@ namespace UnityBuilderAction
             Dictionary<string, string> options = GetValidatedOptions();
 
             //get config json object
-            //Config config = JsonUtility.FromJson<Config>(Resources.Load<TextAsset>("config.json").text);
+            Config config = JsonUtility.FromJson<Config>(Resources.Load<TextAsset>("config").text);
 
             // Set version for this build
-            //PlayerSettings.productName = config.ProductName;
-            //PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, config.ApplicationIdentifier);
+            PlayerSettings.productName = config.ProductName;
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, config.ApplicationIdentifier);
 
-            //PlayerSettings.bundleVersion = config.bundleVersion;
-            //PlayerSettings.Android.bundleVersionCode = config.bundleVersionCode;
-
-            PlayerSettings.productName = "uses name";
-            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.test.buuld");
-
-            PlayerSettings.bundleVersion = "0.1";
-            PlayerSettings.Android.bundleVersionCode = 1;
+            PlayerSettings.bundleVersion = config.bundleVersion;
+            PlayerSettings.Android.bundleVersionCode = config.bundleVersionCode;
 
             // Apply build target
             var buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), options["buildTarget"]);
