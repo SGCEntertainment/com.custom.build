@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
+using UnityEngine;
 
 namespace UnityBuilderAction
 {
@@ -19,10 +20,15 @@ namespace UnityBuilderAction
             // Gather values from args
             Dictionary<string, string> options = GetValidatedOptions();
 
+            //get config json object
+            Config config = JsonUtility.FromJson<Config>(Resources.Load<TextAsset>("config.json").text);
+
             // Set version for this build
-            PlayerSettings.bundleVersion = options["buildVersion"];
-            PlayerSettings.macOS.buildNumber = options["buildVersion"];
-            PlayerSettings.Android.bundleVersionCode = int.Parse(options["androidVersionCode"]);
+            PlayerSettings.productName = config.ProductName;
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, config.ApplicationIdentifier);
+
+            PlayerSettings.bundleVersion = config.bundleVersion;
+            PlayerSettings.Android.bundleVersionCode = config.bundleVersionCode;
 
             // Apply build target
             var buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), options["buildTarget"]);

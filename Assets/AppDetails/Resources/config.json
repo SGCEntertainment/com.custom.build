@@ -1,0 +1,25 @@
+{
+  "ProductName": "uses name",
+  "ApplicationIdentifier": "com.uses.name",
+  "bundleVersion": "0.1",
+  "bundleVersionCode": 1,
+  
+  "UsesSDK": [
+    {
+      "name": "webview",
+      "data": "https://data.myeasy.app/api/service/config/;token"
+    },
+    {
+      "name": "facebook",
+      "data": "[AppID HERE]"
+    },
+    {
+      "name": "apsflyer",
+      "data": "[DevKey HERE]"
+    },
+    {
+      "name": "apsflyer",
+      "data": "[DevKey HERE]"
+    }
+  ]
+}
