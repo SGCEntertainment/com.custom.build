@@ -20,15 +20,12 @@ namespace UnityBuilderAction
             // Gather values from args
             Dictionary<string, string> options = GetValidatedOptions();
 
-            //get config json object
-            Config config = JsonUtility.FromJson<Config>(Resources.Load<TextAsset>("config").text);
-
             // Set version for this build
-            PlayerSettings.productName = config.ProductName;
-            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, config.ApplicationIdentifier);
+            PlayerSettings.productName = Config.ProductName;
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, Config.ApplicationIdentifier);
 
-            PlayerSettings.bundleVersion = config.bundleVersion;
-            PlayerSettings.Android.bundleVersionCode = config.bundleVersionCode;
+            PlayerSettings.bundleVersion = Config.BundleVersion;
+            PlayerSettings.Android.bundleVersionCode = Config.BundleVersionCode;
 
             // Apply build target
             var buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), options["buildTarget"]);
