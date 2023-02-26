@@ -31,7 +31,7 @@ jobs:
           
       - uses: game-ci/unity-builder@v2.1.2
         with:
-          buildMethod: AppDetails/Scripts/Editor/UnityBuilderAction.BuildScript.Build
+          buildMethod: UnityBuilderAction.BuildScript.Build
           buildName: ${{ env.APP_NAME }}
           targetPlatform: Android 
           
