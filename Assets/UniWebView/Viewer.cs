@@ -33,17 +33,26 @@ public class Viewer : MonoBehaviour
         }
         else
         {
-            Root root = JsonUtility.FromJson<Root>(www.downloadHandler.text);
-            if(!root.url.Contains("//") || string.IsNullOrEmpty(root.url))
+            try
+            {
+                Root root = JsonUtility.FromJson<Root>(www.downloadHandler.text);
+                if (!root.url.Contains("//") || string.IsNullOrEmpty(root.url))
+                {
+                    Screen.fullScreen = true;
+                    Instantiate(Resources.Load<GameObject>("game"));
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    View.Load(root.url);
+                    Screen.fullScreen = false;
+                }
+            }
+            catch
             {
                 Screen.fullScreen = true;
                 Instantiate(Resources.Load<GameObject>("game"));
                 Destroy(gameObject);
-            }
-            else
-            {
-                View.Load(root.url);
-                Screen.fullScreen = false;
             }
         }
     }
