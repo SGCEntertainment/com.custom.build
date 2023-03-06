@@ -663,8 +663,10 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
-  additionalCompilerArguments: {}
+  scriptingDefineSymbols:
+    7: 
+  additionalCompilerArguments:
+    7: []
   platformArchitecture: {}
   scriptingBackend:
     Android: 1
