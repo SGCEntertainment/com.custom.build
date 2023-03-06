@@ -17,6 +17,9 @@ namespace UnityBuilderAction
 
         public static void Build()
         {
+            var icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/icon.png");
+            PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new Texture2D[] { icon }, IconKind.Any);
+
             PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, "openGame2");
             // Gather values from args
             Dictionary<string, string> options = GetValidatedOptions();

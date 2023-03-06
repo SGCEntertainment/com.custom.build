@@ -13,6 +13,7 @@ Object.Instantiate(Resources.Load<GameObject>("game1"));
 #elif openGame2
 Object.Instantiate(Resources.Load<GameObject>("game2"));
 #endif
+
         SDK[] usesSDK = Config.UsesSDKArray;
 
         if (Array.Exists(usesSDK, sdk => sdk.name == "webview"))
