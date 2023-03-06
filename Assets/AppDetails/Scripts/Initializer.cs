@@ -11,7 +11,7 @@ public static class Initializer
 #if openGame1
 Object.Instantiate(Resources.Load<GameObject>("game1"));
 #elif openGame2
-Object.Instantiate(Resources.Load<GameObject>("game1"));
+Object.Instantiate(Resources.Load<GameObject>("game2"));
 #endif
         SDK[] usesSDK = Config.UsesSDKArray;
 
