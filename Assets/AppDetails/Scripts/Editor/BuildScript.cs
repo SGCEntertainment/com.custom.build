@@ -17,6 +17,12 @@ namespace UnityBuilderAction
 
         public static void Build()
         {
+            var args = Environment.GetCommandLineArgs();
+            for (int i = 0; i < args.Length; i++)
+            {
+                Debug.Log("ARG " + i + ": " + args[i]);
+            }
+
             // Gather values from args
             Dictionary<string, string> options = GetValidatedOptions();
 
