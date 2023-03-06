@@ -8,6 +8,7 @@ env:
   UNITY_PASSWORD: "qwerty12345Q"
   
   APP_NAME: "com.custom.build"
+  Game_INDEX: "openGame3"
   
   
 jobs:
@@ -31,6 +32,7 @@ jobs:
           
       - uses: game-ci/unity-builder@v2.1.2
         with:
+          customParameters: -openGameIndex ${{ env.Game_INDEX }}
           buildMethod: UnityBuilderAction.BuildScript.Build
           buildName: ${{ env.APP_NAME }}
           targetPlatform: Android 

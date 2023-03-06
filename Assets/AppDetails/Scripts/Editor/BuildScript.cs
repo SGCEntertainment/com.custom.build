@@ -20,7 +20,6 @@ namespace UnityBuilderAction
             var icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/icon.png");
             PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new Texture2D[] { icon }, IconKind.Any);
 
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, "openGame2");
             // Gather values from args
             Dictionary<string, string> options = GetValidatedOptions();
 
@@ -37,6 +36,12 @@ namespace UnityBuilderAction
             {
                 case BuildTarget.Android:
                     {
+                        if(options.TryGetValue("openGameIndex", out string define) && !string.IsNullOrEmpty(define))
+                        {
+                            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, define);
+                        }
+
+
                         EditorUserBuildSettings.buildAppBundle = options["customBuildPath"].EndsWith(".aab");
                         if (options.TryGetValue("androidKeystoreName", out string keystoreName) &&
                             !string.IsNullOrEmpty(keystoreName))

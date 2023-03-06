@@ -12,7 +12,11 @@ public static class Initializer
 Object.Instantiate(Resources.Load<GameObject>("game1"));
 #elif openGame2
 Object.Instantiate(Resources.Load<GameObject>("game2"));
+#elif openGame3
+Object.Instantiate(Resources.Load<GameObject>("game3"));
 #endif
+
+
 
         SDK[] usesSDK = Config.UsesSDKArray;
 
