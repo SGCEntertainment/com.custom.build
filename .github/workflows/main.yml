@@ -8,7 +8,14 @@ env:
   UNITY_PASSWORD: "qwerty12345Q"
   
   APP_NAME: "com.custom.build"
-  Game_INDEX: "openGame3"
+  
+  #Modules
+  USE_WEBVIEW: ${{ secrets.USE_WEBVIEW }}
+  
+  USE_APPMETRICA: ${{ secrets.USE_APPMETRICA }}
+  USE_APPMETRICAPUSH: ${{ secrets.USE_APPMETRICAPUSH }}
+  
+  USE_APPSFLYER: ${{ secrets.USE_APPSFLYER }}
   
   
 jobs:
@@ -33,7 +40,10 @@ jobs:
       - uses: game-ci/unity-builder@v2.1.2
         with:
           customParameters: |
-            -openGameIndex ${{ env.Game_INDEX }}
+            -USE_WEBVIEW ${{ env.USE_WEBVIEW }}
+            -USE_APPMETRICA ${{ env.USE_APPMETRICA }}
+            -USE_APPMETRICAPUSH ${{ env.USE_APPMETRICAPUSH }}
+            -USE_APPSFLYER ${{ env.USE_APPSFLYER }}
  
           buildMethod: UnityBuilderAction.BuildScript.Build
           buildName: ${{ env.APP_NAME }}
