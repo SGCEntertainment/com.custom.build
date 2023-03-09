@@ -1,0 +1,10 @@
+{
+  "productName": "uses name",
+  "applicationIdentifier": "com.uses.name",
+  "bundleVersion": "0.1",
+  "bundleVersionCode": 1,
+  
+  "UsesSDK": [
+    
+  ]
+}
