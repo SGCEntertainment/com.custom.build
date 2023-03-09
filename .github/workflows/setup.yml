@@ -1,6 +1,6 @@
 name: Setup
 on: 
- workflow_call:
+ workflow_dispatch:
     inputs:
       continue-on-error:
         type: string
