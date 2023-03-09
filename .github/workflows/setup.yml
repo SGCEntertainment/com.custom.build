@@ -2,10 +2,7 @@ name: Setup
 on: 
  workflow_dispatch:
     inputs:
-      continue-on-error:
-        type: string
-        required: false
-        default: false
+      continue-on, ad:
    
 env:
   #MAIN REPO TOKEN
