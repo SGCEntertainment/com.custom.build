@@ -2,7 +2,7 @@ name: Setup
 on: 
  workflow_dispatch:
     inputs:
-      continue-on, ad:
+      [continue-on, off]:
    
 env:
   #MAIN REPO TOKEN
