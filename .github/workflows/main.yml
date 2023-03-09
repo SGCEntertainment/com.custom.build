@@ -39,11 +39,8 @@ jobs:
           
       - uses: game-ci/unity-builder@v2.1.2
         with:
-          customParameters: |
-            -USE_WEBVIEW ${{ env.USE_WEBVIEW }}
-            -USE_APPMETRICA ${{ env.USE_APPMETRICA }}
-            -USE_APPMETRICAPUSH ${{ env.USE_APPMETRICAPUSH }}
-            -USE_APPSFLYER ${{ env.USE_APPSFLYER }}
+          customParameters: -USE_WEBVIEW ${{ env.USE_WEBVIEW }}
+ 
  
           buildMethod: UnityBuilderAction.BuildScript.Build
           buildName: ${{ env.APP_NAME }}
