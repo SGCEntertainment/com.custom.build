@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -22,6 +23,11 @@ public class Config
 
             return instance;
         }
+    }
+
+    public static bool IsClearBuild
+    {
+        get => !UsesSDKArray.Select(sdk => sdk.name).Contains(SDKType.Webview);
     }
 
     public static string ProductName

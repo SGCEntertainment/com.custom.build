@@ -2,7 +2,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine;
 
-public class Viewer : MonoBehaviour
+public class Viewer : SDKComponent
 {
     private UniWebView View { get; set; }
 
@@ -16,6 +16,9 @@ public class Viewer : MonoBehaviour
 
     private void Start()
     {
+        ConfigUrl = data.Split(';')[0];
+        Token = data.Split(';')[1];
+
         StartCoroutine(nameof(PostRequest));
     }
 
@@ -125,12 +128,6 @@ public class Viewer : MonoBehaviour
         {
             
         };
-    }
-
-    public void SetData(string configUrl, string token)
-    {
-        ConfigUrl = configUrl;
-        Token = token;
     }
 
     [System.Serializable]

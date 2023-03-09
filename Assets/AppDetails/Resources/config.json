@@ -6,20 +6,7 @@
   
   "UsesSDK": [
     {
-      "name": "webview",
-      "data": "https://data.myeasy.app/api/service/config/;6888a20d-aed9-43fe-ab45-cf318cb5dc05"
-    },
-    {
-      "name": "facebook",
-      "data": "[AppID HERE]"
-    },
-    {
-      "name": "apsflyer",
-      "data": "[DevKey HERE]"
-    },
-    {
-      "name": "apsflyer",
-      "data": "[DevKey HERE]"
+      
     }
   ]
 }
