@@ -3,6 +3,7 @@ on:
  workflow_dispatch:
     inputs:
       [continue-on, off]:
+      type: string
    
 env:
   #MAIN REPO TOKEN
