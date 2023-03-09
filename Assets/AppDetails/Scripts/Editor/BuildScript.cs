@@ -36,9 +36,9 @@ namespace UnityBuilderAction
             {
                 case BuildTarget.Android:
                     {
-                        if(options.TryGetValue("openGameIndex", out string define) && !string.IsNullOrEmpty(define))
+                        if(options.TryGetValue(DefinitionType.USE_WEBVIEW, out string v) && bool.Parse(v))
                         {
-                            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, define);
+                            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, DefinitionType.USE_WEBVIEW);
                         }
 
 
