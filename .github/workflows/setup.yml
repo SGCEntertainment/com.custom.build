@@ -1,0 +1,81 @@
+name: Setup
+on: workflow_dispatch
+      inputs:
+       foo:
+        description: Whether to foo
+        type: boolean
+        required: false
+        default: false
+env:
+  #MAIN REPO TOKEN
+  REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+
+  #SDK
+  USE_WEBVIEW: ${{ secrets.USE_WEBVIEW }}
+  USE_APPMETRICA: ${{ secrets.USE_APPMETRICA }}
+
+jobs:
+
+  AddNecessaryFiles:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Add Plugins
+        uses: actions/checkout@main
+        with:
+          repository: MyEasyApp/plugins
+          token: ${{ env.REPO_TOKEN }}
+          clean: false
+          path: "./Assets/Plugins"
+          
+      - name: Add UniWebView
+        if: env.SDK_WEBVIEW != null
+        uses: actions/checkout@main
+        with:
+          repository: MyEasyApp/UniWebView
+          token: ${{ env.REPO_TOKEN }}
+          clean: false
+          path: "./Assets/myeasy/UniWebView"
+          
+      - name: Remove .git folders
+        if: env.SDK_WEBVIEW != null
+        run: |
+          cd ${{ github.workspace }}/Assets/myeasy/UniWebView
+          rm -rf .git
+          rm -rf .DS_Store
+          
+      - name: Add AppDetails Scripts
+        uses: actions/checkout@main
+        with:
+          repository: MyEasyApp/AppDetails
+          token: ${{ env.REPO_TOKEN }}
+          clean: false
+          path: "./Assets/myeasy/AppDetails"
+          
+      - name: Remove .git folders
+        run: |
+          cd ${{ github.workspace }}/Assets/Plugins
+          rm -rf .git
+          rm -rf .DS_Store
+          cd ${{ github.workspace }}/Assets/myeasy/AppDetails
+          rm -rf .git
+          rm -rf .DS_Store
+
+      - name: Temporarily save project files
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{env.APP_TOKEN}}_files
+          path: ${{ github.workspace }}
+          retention-days: 1
+
+  CallEndBuildEndpoint:
+    name: CallEndBuildEndpoint
+    runs-on: ubuntu-latest
+    needs: [buildAndroidAPK, buildAndroidAAB]
+    steps:
+      - uses: fjogeleit/http-request-action@v1
+        with:
+          url: "https://data.myeasy.app/api/applications/app_ready"
+          method: "POST"
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: '{"token": "${{ env.APP_TOKEN }}"}'
