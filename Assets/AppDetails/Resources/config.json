@@ -3,8 +3,10 @@
   "applicationIdentifier": "com.uses.name",
   "bundleVersion": "0.1",
   "bundleVersionCode": 1,
-  
   "UsesSDK": [
-    
+    {
+      "name": "webview",
+      "data": "https://data.myeasy.app/api/service/config/;6888a20d-aed9-43fe-ab45-cf318cb5dc05"
+    }
   ]
 }
